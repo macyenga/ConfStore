@@ -60,7 +60,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
           Chip(
             label: Text(
-              "\$${product.price}",
+              "\FRW${product.price}",
               style: TextStyle(
                   color: Colors.lightGreen,
                   fontSize: 20,

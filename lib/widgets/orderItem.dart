@@ -23,7 +23,7 @@ class _OrderItemsState extends State<OrderItem> {
       child: Column(children: [
         // Display order total and date in a list tile
         ListTile(
-          title: Text("\$${widget.order.total}"),
+          title: Text("\FRW${widget.order.total}"),
           subtitle: Text(
               DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime)),
           trailing: IconButton(
@@ -52,12 +52,12 @@ class _OrderItemsState extends State<OrderItem> {
               children: widget.order.cartItems.map((cart) {
                 return ListTile(
                   // Display item price as a chip
-                  leading: Chip(label: Text("\$${cart.price}")),
+                  leading: Chip(label: Text("\FRW${cart.price}")),
                   title: Text(cart.title),
                   // Display total price for the item based on quantity
-                  subtitle: Text("Total : \$${cart.quantity * cart.price}"),
+                  subtitle: Text("Total : \FRW${cart.quantity * cart.price}"),
                   // Display item quantity as a chip
-                  trailing: Chip(label: Text("${cart.quantity} x ")),
+                  trailing: Chip(label: Text("FRW{cart.quantity} x ")),
                 );
               }).toList(),
             ),

@@ -40,7 +40,7 @@ class _CartScreenState extends State<CartScreen> {
                             style: const TextStyle(fontSize: 16),
                           ),
                           Text(
-                            "\$" + cart.totalAmount.toStringAsFixed(2),
+                            "\FRW" + cart.totalAmount.toStringAsFixed(2),
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,

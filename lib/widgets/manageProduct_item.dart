@@ -60,7 +60,7 @@ class ManageProductItem extends StatelessWidget {
             color: Colors.black,
             child: ListTile(
               leading: Text(
-                '${product.price}',
+                'FRW{product.price}',
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
               title: Text(
