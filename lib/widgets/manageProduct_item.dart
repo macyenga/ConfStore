@@ -1,4 +1,3 @@
-
 // This is a StatelessWidget which displays the item information of a product in the ManageProductScreen
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +59,7 @@ class ManageProductItem extends StatelessWidget {
             color: Colors.black,
             child: ListTile(
               leading: Text(
-                'FRW{product.price}',
+                '${product.price}',
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
               title: Text(
