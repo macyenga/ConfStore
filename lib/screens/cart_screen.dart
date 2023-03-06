@@ -9,45 +9,49 @@ class CartScreen extends StatefulWidget {
   static const routName = '/cart-screen';
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
   bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart_Provider>(context);
     final order = Provider.of<Order_Provider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(title: Text("Cart")),
-      body: Column(children: [
-        Card(
-          margin: EdgeInsets.all(8),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 6,
-                  child: FittedBox(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Total Amount : ",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Text(
-                          "\$" + cart.totalAmount.toStringAsFixed(2),
-                          style: TextStyle(
+      body: Column(
+        children: [
+          Card(
+            margin: const EdgeInsets.all(8),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 6,
+                    child: FittedBox(
+                      child: Row(
+                        children: [
+                          Text(
+                            "Total Amount : ",
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            "\$" + cart.totalAmount.toStringAsFixed(2),
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Colors.lightGreen),
-                        ),
-                      ],
+                              color: Colors.lightGreen,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
+                  Expanded(
                     flex: 4,
                     child: TextButton(
                       onPressed: (cart.itemCount <= 0 || isLoading)
@@ -62,32 +66,37 @@ class _CartScreenState extends State<CartScreen> {
                                     .addOrder(cart.valuesList, cart.totalAmount)
                                     .then((value) {
                                   cart.clean();
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                          content: Text(
-                                    "Order Successfully added!",
-                                    textAlign: TextAlign.center,
-                                  )));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: const Text(
+                                        "Order Successfully added!",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  );
                                 }).catchError((err) async {
                                   await showDialog(
-                                      context: context,
-                                      builder: (_) {
-                                        return AlertDialog(
-                                          title: Text(
-                                            "ERROR !",
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                          content: Text(
-                                              "The [style] argument is optional. When omitted, the text will use the style from the closest enclosing [DefaultTextStyle]. If the given style's [TextStyle.inherit] property is true (the default), the given style will be merged with the closest enclosing [DefaultTextStyle]."),
-                                          actions: [
-                                            TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Text("Okay"))
-                                          ],
-                                        );
-                                      });
+                                    context: context,
+                                    builder: (_) {
+                                      return AlertDialog(
+                                        title: const Text(
+                                          "ERROR !",
+                                          style: TextStyle(color: Colors.red),
+                                        ),
+                                        content: const Text(
+                                          "The [style] argument is optional. When omitted, the text will use the style from the closest enclosing [DefaultTextStyle]. If the given style's [TextStyle.inherit] property is true (the default), the given style will be merged with the closest enclosing [DefaultTextStyle].",
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text("Okay"),
+                                          )
+                                        ],
+                                      );
+                                    },
+                                  );
                                 }).whenComplete(() {
                                   setState(() {
                                     isLoading = false;
@@ -96,27 +105,33 @@ class _CartScreenState extends State<CartScreen> {
                               }
                             },
                       child: isLoading
-                          ? CircularProgressIndicator()
-                          : Text(
+                          ? const CircularProgressIndicator()
+                          : const Text(
                               "ORDER NOW",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                    )),
-              ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        Expanded(
+          Expanded(
             child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-              itemCount: cart.itemCount,
-              itemBuilder: (ctx, index) =>
-                  CartItem(cart.keyList[index], cart.valuesList[index])),
-        ))
-      ]),
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                itemCount: cart.itemCount,
+                itemBuilder: (ctx, index) => CartItem(
+                  cart.keyList[index],
+                  cart.valuesList[index],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

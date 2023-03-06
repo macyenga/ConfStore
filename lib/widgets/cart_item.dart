@@ -49,9 +49,9 @@ class CartItem extends StatelessWidget {
       },
       child: Card(
         child: ListTile(
-          leading: Chip(label: Text("\$${cart.price}")),
+          leading: Chip(label: Text("FRW${cart.price}")),
           title: Text(cart.title),
-          subtitle: Text("Total : \$${cart.quantity * cart.price}"),
+          subtitle: Text("Total : FRW${cart.quantity * cart.price}"),
           trailing: Chip(label: Text("${cart.quantity} x ")),
         ),
       ),

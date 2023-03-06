@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:conf_store/data/dummy_data.dart';
 import 'package:conf_store/provider/cart_provider.dart';
-import 'package:conf_store/provider/product.dart';
 import 'package:conf_store/widgets/drawer.dart';
-import 'package:conf_store/widgets/product_item.dart';
 
 import '../provider/products_provider.dart';
 import '../widgets/badge.dart' as badges;

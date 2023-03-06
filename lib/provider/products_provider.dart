@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:conf_store/data/dummy_data.dart';
 import 'package:conf_store/models/http_exception.dart';
 import 'package:conf_store/provider/product.dart';
 import 'dart:convert';
