@@ -4,7 +4,7 @@ ConfStore is a Firebase Realtime Database based Flutter application that allows 
 
 Here's a video of my project in action:
 
-<iframe width="560" height="315" src="https://youtu.be/xvMrcy4r7tQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CkNrJqrjY5E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <img src="relative/path/to/image.png" alt="Alt text" width="200" height="200">
 
